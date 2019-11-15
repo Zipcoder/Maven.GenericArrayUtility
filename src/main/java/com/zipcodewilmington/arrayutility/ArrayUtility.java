@@ -29,22 +29,34 @@ public class ArrayUtility<E> {
     }
 
     public Integer countDuplicatesInMerge(E[] arrayToMerge, E valueToCheck) {
-        E[] bigArr = Arrays.copyOf(array, array.length + arrayToMerge.length);
-        for (int i = array.length; i < bigArr.length; i++) {
-            bigArr[i] = arrayToMerge[i-array.length];
-        }
-        return (int) Arrays.stream(bigArr)
+        return (int) Arrays.stream(merge(arrayToMerge))
                 .filter(val -> val == valueToCheck)
                 .count();
     }
 
     public E getMostCommonFromMerge(E[] arrayToMerge) {
-        return null;
+        array = merge(arrayToMerge);
+        E mostCommon = null;
+        int num = 0;
+        for (E item : array) {
+            Integer occur = getNumberOfOccurrences(item);
+            mostCommon = occur > num ? item : mostCommon;
+            num = occur > num ? occur : num;
+        }
+        return mostCommon;
     }
 
     public Integer getNumberOfOccurrences(E valueToCheck) {
         return ((int) Arrays.stream(array)
                 .filter(val -> val == valueToCheck)
                 .count());
+    }
+
+    public E[] merge(E[] arrayToMerge) {
+        E[] bigArr = Arrays.copyOf(array, array.length + arrayToMerge.length);
+        for (int i = array.length; i < bigArr.length; i++) {
+            bigArr[i] = arrayToMerge[i-array.length];
+        }
+        return bigArr;
     }
 }
