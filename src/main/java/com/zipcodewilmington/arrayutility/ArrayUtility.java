@@ -17,13 +17,22 @@ public class ArrayUtility <T>{
      */
 
     private T[] inputArray;
+    private ArrayList<T> temp;
 
     public ArrayUtility(T[] inputArray) {
         this.inputArray = inputArray;
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
-        return null;
+        int counter = 0;
+        temp = new ArrayList<>();
+
+        mergeArrays(arrayToMerge);
+
+        for (T eachElement : temp){
+            if (eachElement.equals(valueToEvaluate)) counter++;
+        }
+        return counter;
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge) {
@@ -62,5 +71,14 @@ public class ArrayUtility <T>{
         }
 
         return newArray.toArray(Arrays.copyOf(inputArray,newArray.size()));
+    }
+
+    private void mergeArrays (T[] firstArray){
+        for (T eachElement : firstArray){
+            temp.add(eachElement);
+        }
+        for (T eachElement : this.inputArray){
+            temp.add(eachElement);
+        }
     }
 }
