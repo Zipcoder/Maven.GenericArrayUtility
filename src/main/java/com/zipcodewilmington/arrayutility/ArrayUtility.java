@@ -1,5 +1,8 @@
 package com.zipcodewilmington.arrayutility;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 3/6/18.
  */
@@ -13,8 +16,10 @@ public class ArrayUtility <T>{
     Return generic for getMostCommon/remove as it it used with different types
      */
 
+    private T[] inputArray;
 
     public ArrayUtility(T[] inputArray) {
+        this.inputArray = inputArray;
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
@@ -30,7 +35,16 @@ public class ArrayUtility <T>{
     }
 
     public T[] removeValue(T valueToRemove) {
-        return null;
+        ArrayList<T> newArray = new ArrayList<>();
 
+        for (T eachElement : this.inputArray){
+            if (eachElement.equals(valueToRemove)){
+
+            } else {
+                newArray.add(eachElement);
+            }
+        }
+
+        return newArray.toArray(Arrays.copyOf(inputArray,newArray.size()));
     }
 }
