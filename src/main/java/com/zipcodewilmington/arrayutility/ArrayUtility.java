@@ -27,7 +27,19 @@ public class ArrayUtility <T>{
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge) {
-        return null;
+        int counter = 0;
+        int max = 0;
+        T mostCommon = null;
+
+        for (T eachElement : arrayToMerge){
+            counter = getNumberOfOccurrences(eachElement);
+            if (counter > max){
+                max = counter;
+                mostCommon = eachElement;
+            }
+        }
+
+        return mostCommon;
     }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
