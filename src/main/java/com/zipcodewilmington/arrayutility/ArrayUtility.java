@@ -31,7 +31,11 @@ public class ArrayUtility <T>{
     }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
-        return null;
+        int counter = 0;
+        for (T eachElement : this.inputArray){
+            if (eachElement.equals(valueToEvaluate)) counter++;
+        }
+        return counter;
     }
 
     public T[] removeValue(T valueToRemove) {
