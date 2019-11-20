@@ -9,7 +9,7 @@ import java.util.Arrays;
  *
  * @ATTENTION_TO_STUDENTS You are forbidden from modifying this class.
  */
-public class UnitTestingUtils {
+public class  UnitTestingUtils{
     public synchronized static <T, E> void assertArrayEquality(T[] expected, E[] actual) {
         Arrays.sort(expected);
         Arrays.sort(actual);
