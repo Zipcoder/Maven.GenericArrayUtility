@@ -16,4 +16,25 @@ public class ArrayUtility<D extends  Object> {
         for(D element : arrayToMerge){if(element == valueToEvaluate){ count++;}}
         return count;
     }
+
+    public D getMostCommonFromMerge(D[] arrayToMerge) {
+        D currentAns = null;
+        Integer highestCount = 0;
+        Integer otherCount = 0;
+
+        for (D element : inputArray) {
+            if (countDuplicatesInMerge(arrayToMerge, element) > highestCount) {
+                currentAns = element;
+                highestCount = countDuplicatesInMerge(arrayToMerge, element);
+            }
+        }
+
+        for (D element : arrayToMerge) {
+            if (countDuplicatesInMerge(arrayToMerge, element) > highestCount) {
+                currentAns = element;
+                highestCount = countDuplicatesInMerge(arrayToMerge, element);
+            }
+        }
+        return currentAns;
+    }
 }
