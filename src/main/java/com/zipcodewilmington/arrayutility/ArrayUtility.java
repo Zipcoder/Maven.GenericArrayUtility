@@ -2,6 +2,8 @@ package com.zipcodewilmington.arrayutility;
 
 import org.omg.CORBA.Object;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 3/6/18.
  */
@@ -50,8 +52,8 @@ public class ArrayUtility<T> {
     }
 
     public T[] removeValue(T valueToRemove) {
-        Integer occurs = getNumberOfOccurrences(valueToRemove);
-        T[] newT = (T[]) new Object[inputArray.length - occurs];
+        Integer occurs = inputArray.length - getNumberOfOccurrences(valueToRemove);
+        T[] newT = Arrays.copyOf(inputArray,occurs);
         int j = 0;
         for(T t: inputArray){
             if(t != valueToRemove){
